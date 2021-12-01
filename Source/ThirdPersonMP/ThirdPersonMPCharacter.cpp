@@ -11,6 +11,7 @@
 #include "Net/UnrealNetwork.h"
 #include "Engine/Engine.h"
 #include "UObject/CoreNet.h"
+#include "AmmoSystem.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AThirdPersonMPCharacter
@@ -51,6 +52,11 @@ AThirdPersonMPCharacter::AThirdPersonMPCharacter()
 	CurrentHealth = 100;
 	MaxHealth = 100;
 	bIsDead = false;
+
+	AmmoSystem = CreateDefaultSubobject<UAmmoSystem>(TEXT("AmmoSystem"));
+	AmmoSystem->CurrentAmmo = 30;
+	AmmoSystem->MaxAmmo = 30;
+	AmmoSystem->AmmoInventory = 120;
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
@@ -66,6 +72,7 @@ void AThirdPersonMPCharacter::GetLifetimeReplicatedProps(TArray<FLifetimePropert
 	DOREPLIFETIME(AThirdPersonMPCharacter, LookUpAxis);
 	DOREPLIFETIME(AThirdPersonMPCharacter, CurrentHealth);
 	DOREPLIFETIME(AThirdPersonMPCharacter, bIsDead);
+	
 }
 
 //////////////////////////////////////////////////////////////////////////

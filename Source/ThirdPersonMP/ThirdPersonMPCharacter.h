@@ -18,6 +18,9 @@ class AThirdPersonMPCharacter : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
+
+	
+
 public:
 	AThirdPersonMPCharacter();
 	/**  Ù–‘∏¥÷∆ */
@@ -41,6 +44,9 @@ public:
 	float MaxHealth = 100;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated)
 	bool bIsDead = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UAmmoSystem* AmmoSystem;
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Replicated)
